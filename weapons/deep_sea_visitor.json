@@ -1,0 +1,20 @@
+{
+    "Base_HP": 0,
+    "Base_DEF": 0,
+    "Base_ATK": 713,
+    "CRIT_Rate": 0.44,
+    "CRIT_DMG": 0,
+    "PEN_Ratio": 0,
+    "Impact": 0,
+    "Anomaly_Mastery": 0,
+    "Anomaly Proficiency": 0,
+    "Energy_Regen": 0,
+    "HP_%": 0,
+    "DEF_%": 0,
+    "ATK_%": 0,
+    "Daze_%": 0,
+    "Damage%_Multiplier": 0.25,
+    "Final_HP_%": 0,
+    "Final_DEF_%": 0,
+    "Final_ATK_%": 0
+}

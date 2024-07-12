@@ -1,0 +1,30 @@
+{
+    "character_stats": {
+        "Base_HP": 7480.4,
+        "Base_DEF": 603.4,
+        "Base_ATK": 825.97,
+        "CRIT_Rate": 0.05,
+        "CRIT_DMG": 0.5,
+        "PEN_Ratio": 0,
+        "Impact": 83,
+        "Anomaly_Mastery": 151,
+        "Anomaly_Proficiency": 116,
+        "Energy_Regen": 1.2,
+        "Element": "Electric"
+    },
+    "motion_values": {
+        "hit_1": {"DMG": 101, "Daze": 26.1, "Element": "Electric"},
+        "hit_2": {"DMG": 109.2, "Daze": 49.1, "Element": "Electric"},
+        "hit_3": {"DMG": 227.4, "Daze": 101.3, "Element": "Electric"},
+        "hit_4": {"DMG": 339.9, "Daze": 151.3, "Element": "Electric"},
+        "moving": {"DMG": 73.6, "Daze": 57.4, "Element": "Physical"},
+        "dash_attack": {"DMG": 61.2, "Daze": 23.9, "Element": "Physical"},
+        "dodge_counter": {"DMG": 299.2, "Daze": 212.6, "Element": "Electric"},
+        "quick_assist": {"DMG": 83.3, "Daze": 64.4, "Element": "Electric"},
+        "assist_followup": {"DMG": 653.5, "Daze": 441.5, "Element": "Electric"},
+        "special_attack": {"DMG": 77.2, "Daze": 60.1, "Element": "Electric"},
+        "ex_special_attack": {"DMG": 607.4, "Daze": 378.2, "Element": "Electric"},
+        "chain_attack": {"DMG": 1039.3, "Daze": 215.3, "Element": "Electric"},
+        "ultimate": {"DMG": 2688.4, "Daze": 188, "Element": "Electric"}
+    }
+}
