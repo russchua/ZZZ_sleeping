@@ -1,0 +1,43 @@
+{
+    "main_3": {
+        "Flat_HP": 2200,
+        "Flat_ATK": 316,
+        "Flat_DEF": 184,
+        "Elemental_Damage": 0.325
+    },
+    "disk_4": {
+        "ATK_%": 0.3,
+        "HP_%": 0.3,
+        "DEF_%": 0.48,
+        "Anomaly Proficiency": 92,
+        "CRIT_Rate": 0.24,
+        "CRIT_DMG" : 0.48
+    },
+    "disk_5": {
+        "ATK_%": 0.3,
+        "HP_%": 0.3,
+        "DEF_%": 0.48,
+        "PEN_Ratio": 0.24,
+        "Elemental_Damage": 0.3
+    },
+    "disk_6": {
+        "ATK_%": 0.3,
+        "HP_%": 0.3,
+        "DEF_%": 0.48,
+        "Anomaly Mastery": 0.3,
+        "Energy_Regen": 0.6,
+        "Impact": 0.18
+    },
+    "sub": {
+        "Flat_ATK": 22,
+        "ATK_%": 0.03,
+        "Flat_HP": 118,
+        "HP_%": 0.03,
+        "Flat_DEF": 15,
+        "DEF_%": 0.048,
+        "CRIT_Rate": 0.024,
+        "CRIT_DMG" : 0.048,
+        "Flat_PEN": 9,
+        "Anomaly Proficiency": 9
+    }
+}

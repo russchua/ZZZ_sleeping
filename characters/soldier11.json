@@ -1,0 +1,29 @@
+{
+    "character_stats": {
+        "Base_HP": 7672.3,
+        "Base_DEF": 613.3,
+        "Base_ATK": 888.57,
+        "CRIT_Rate": 0.194,
+        "CRIT_DMG": 0.5,
+        "PEN_Ratio": 0,
+        "Impact": 93,
+        "Anomaly_Mastery": 94,
+        "Anomaly_Proficiency": 93,
+        "Energy_Regen": 1.2,
+        "Element": "Fire"
+    },
+    "motion_values": {
+        "hit_1": {"DMG": 89.30, "Daze": 35.2, "Element": "Physical"},
+        "hit_2": {"DMG": 202.00, "Daze": 122.8, "Element": "Physical"},
+        "hit_3": {"DMG": 541.2, "Daze": 339.4, "Element": "Physical"},
+        "e_hit_1": {"DMG": 89.30, "Daze": 35.2, "Element": "Ice"},
+        "e_hit_2": {"DMG": 202.00, "Daze": 122.8, "Element": "Ice"},
+        "e_hit_3": {"DMG": 541.2, "Daze": 339.4, "Element": "Ice"},
+        "charged_dash_attack": {"DMG": 287.8, "Daze": 172.1, "Element": "Ice"},
+        "quick_assist": {"DMG": 221.00, "Daze": 170.6, "Element": "Ice"},
+        "follow_up": {"DMG": 797.00, "Daze": 541.4, "Element": "Ice"},
+        "ex_1": {"DMG": 685.9, "Daze": 571.6, "Element": "Ice", "Energy_Cost": 40},
+        "ex_2": {"DMG": 1006.00, "Daze": 523.8, "Element": "Ice", "Energy_Cost": 40},
+        "ultimate": {"DMG": 3823.8, "Daze": 402, "Element": "Fire"}
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "Enemy": "Tyrfing",
+    "Level": 70,
+    "Scaling_ID": 1000,
+    "Base_DEF": 36,
+    "DEF": 571.7,
+    "Stun_Scaling_ID": 1003,
+    "Base_Stun": 600,
+    "Stun": 1002,
+    "Fire_RES": 0,
+    "Ice_RES": -0.2,
+    "Electric_RES": 0,
+    "Ether_RES": -0.2,
+    "Physical_RES": 0,
+    "Daze_Resist": 0,
+    "Daze_Taken": 0,
+    "Stun_Multiplier": 1
+}

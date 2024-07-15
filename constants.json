@@ -1,0 +1,9 @@
+{
+    "anomaly_data": {
+        "Fire": 10,
+        "Electric": 12.5,
+        "Ether": 12.5,
+        "Ice": 5,
+        "Physical": 7.13
+    }
+}
