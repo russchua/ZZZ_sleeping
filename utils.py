@@ -1,4 +1,5 @@
 import json
+from itertools import combinations_with_replacement, product
 
 def get_stats(character, weapon, disk):
     with open(character) as f:
@@ -183,3 +184,45 @@ def calculate_after_assignment(
     new_mv = motion_to_damage(base_motion_values, total_stats, target_stats)
     final_damage = combo_to_damage(damage_combo, new_mv)
     print(final_damage)
+
+
+def generate_valid_combinations(
+        total_points: int,
+        max_per_stat: int,
+        attributes = {
+            "Flat_ATK": 22,
+            "ATK_%": 0.03,
+            "CRIT_Rate": 0.024,
+            "CRIT_DMG" : 0.048,
+            "Flat_PEN": 9
+        },
+    ):
+    # Attribute is a dictionary like {"ATK": 0, "DEF": 0, "HP": 0}
+    # Get all possible combinations with the limit constraint
+    # Return a dictionary like {"ATK": 1, "DEF": 2, "HP": 3}
+    valid_combinations = []
+    for combination in product(range(max_per_stat + 1), repeat = len(attributes)):
+        if sum(combination) == total_points:
+            valid_combinations.append(dict(zip(attributes.keys(), combination)))
+    return valid_combinations
+
+def generate_main_disk_options(
+    disk_4_attributes_of_interest = {
+        "ATK_%": 0.3,
+        "CRIT_Rate": 0.24,
+        "CRIT_DMG" : 0.48
+    },
+    disk_5_attributes_of_interest = {
+        "ATK_%": 0.3,
+        "PEN_Ratio": 0.24,
+        "Elemental_Damage": 0.3
+    },
+    disk_6_attributes_of_interest = {
+        "ATK_%": 0.3
+    }
+):
+    disk_4_combo = [key for key in disk_4_attributes_of_interest.keys()]
+    disk_5_combo = [key for key in disk_5_attributes_of_interest.keys()]
+    disk_6_combo = [key for key in disk_6_attributes_of_interest.keys()]
+
+    return disk_4_combo, disk_5_combo, disk_6_combo
