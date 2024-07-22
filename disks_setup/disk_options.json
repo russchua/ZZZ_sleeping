@@ -2,8 +2,7 @@
     "main_3": {
         "Flat_HP": 2200,
         "Flat_ATK": 316,
-        "Flat_DEF": 184,
-        "Elemental_Damage": 0.325
+        "Flat_DEF": 184
     },
     "disk_4": {
         "ATK_%": 0.3,

@@ -1,0 +1,104 @@
+{
+    "Chaotic_Metal": {
+        "two": {
+            "Element": "Ether",
+            "DMG%_Multiplier": 0.1
+        },
+        "four": {
+            "CRIT_DMG" : 0.53
+        }
+    },
+    "Fanged_Metal": {
+        "two": {
+            "Element": "Physical",
+            "DMG%_Multiplier": 0.1
+        },
+        "four": {
+            "DMG%_Multiplier" : 0.35
+        }
+    },
+    "Freedom_Blues": {
+        "two": {
+            "Anomaly Proficiency": 30
+        },
+        "four": {
+            "Anomaly_Buildup_RES_reduction" : 0.2
+        }
+    },
+    "Hormone_Punk": {
+        "two": {
+            "ATK_%": 0.1
+        },
+        "four": {
+            "Final_ATK_%" : 0.2
+        }
+    },
+    "Inferno_Metal": {
+        "two": {
+            "Element": "Fire",
+            "DMG%_Multiplier": 0.1
+        },
+        "four": {
+            "CRIT_Rate" : 0.28
+        }
+    },
+    "Polar_Metal": {
+        "two": {
+            "Element": "Ice",
+            "DMG%_Multiplier": 0.1
+        },
+        "four": {
+            "DMG%_Multiplier" : 0.4
+        }
+    },
+    "Puffer_Electro": {
+        "two": {
+            "PEN_Ratio": 0.08
+        },
+        "four": {
+            "DMG%_Multiplier" : 0.2,
+            "Final_ATK_%" : 0.15
+        }
+    },
+    "Shockstar_Disco": {
+        "two": {
+            "Impact_%": 0.06
+        },
+        "four": {
+            "Stun_Bonus" : 0.2
+        }
+    },
+    "Soul_Rock": {
+        "two": {
+            "DEF_%": 0.16
+        },
+        "four": {
+            "DMG%_Multiplier" : -0.4
+        }
+    },
+    "Swing_Jazz": {
+        "two": {
+            "Energy_Regen": 0.2
+        },
+        "four": {
+            "DMG%_Multiplier" : 0.15
+        }
+    },
+    "Thunder_Metal": {
+        "two": {
+            "Element": "Electric",
+            "DMG%_Multiplier": 0.1
+        },
+        "four": {
+            "Final_ATK_%" : 0.28
+        }
+    },
+    "Woodpecker_Electro": {
+        "two": {
+            "CRIT_Rate": 0.08
+        },
+        "four": {
+            "Final_ATK_%" : 0.09
+        }
+    }
+}

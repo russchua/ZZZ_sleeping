@@ -10,7 +10,8 @@
         "Anomaly_Mastery": 94,
         "Anomaly_Proficiency": 93,
         "Energy_Regen": 1.2,
-        "Element": "Fire"
+        "Element": "Fire",
+        "DMG%_Multiplier": 0.325
     },
     "motion_values": {
         "hit_1": {"DMG": 89.30, "Daze": 35.2, "Element": "Physical"},

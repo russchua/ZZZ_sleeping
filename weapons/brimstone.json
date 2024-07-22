@@ -13,7 +13,7 @@
     "DEF_%": 0,
     "ATK_%": 0.3,
     "Daze_%": 0,
-    "Damage%_Multiplier": 0,
+    "DMG%_Multiplier": 0,
     "Final_HP_%": 0,
     "Final_DEF_%": 0,
     "Final_ATK_%": 0.28

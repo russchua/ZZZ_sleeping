@@ -1,6 +1,19 @@
 import json
 from itertools import combinations_with_replacement, product
 
+disk_set_effects = "disks_setup/set_effects/all_set_effects.json"
+# other constants
+constants_path = "constants.json"
+target_path = "enemies/tyrfing.json"
+
+with open(disk_set_effects) as f:
+    disk_set_effects_dict = json.load(f)
+with open(target_path) as f:
+    target_stats = json.load(f)
+with open(constants_path) as f:
+    anomaly_data = json.load(f)["anomaly_data"]
+
+
 def get_stats(character, weapon, disk):
     with open(character) as f:
         character_dict = json.load(f)
@@ -50,10 +63,8 @@ def get_total_stats(
         character_stats,
         weapon_stats,
         other_stats,
-        target_path
     ):
-    with open(target_path) as f:
-        target_stats = json.load(f)
+    
     # Complete initialization of total_stats
     total_stats = {
         "Level": 60,
@@ -77,12 +88,14 @@ def get_total_stats(
     total_stats["CRIT_DMG"] = get_stat(character_stats, "CRIT_DMG") + get_stat(weapon_stats, "CRIT_DMG") + get_stat(other_stats, "CRIT_DMG")
     total_stats["PEN_Ratio"] = get_stat(character_stats, "PEN_Ratio") + get_stat(weapon_stats, "PEN_Ratio") + get_stat(other_stats, "PEN_Ratio")
     total_stats["Impact"] = get_stat(character_stats, "Impact") + get_stat(weapon_stats, "Impact")
+    total_stats["Stun_Bonus"] = total_stats["Stun_Bonus"] + get_stat(character_stats, "Stun_Bonus") + get_stat(weapon_stats, "Stun_Bonus") \
+        + get_stat(other_stats, "Stun_Bonus")
     total_stats["Anomaly_Mastery"] = get_stat(character_stats, "Anomaly_Mastery") + get_stat(weapon_stats, "Anomaly_Mastery")
-    total_stats["Anomaly_Proficiency"] = get_stat(character_stats, "Anomaly_Proficiency") + get_stat(other_stats, "Anomaly Proficiency") \
-        + get_stat(weapon_stats, "Anomaly Proficiency")
+    total_stats["Anomaly_Proficiency"] = get_stat(character_stats, "Anomaly_Proficiency") + get_stat(other_stats, "Anomaly_Proficiency") \
+        + get_stat(weapon_stats, "Anomaly_Proficiency")
     total_stats["Energy_Regen"] = get_stat(character_stats, "Energy_Regen") + get_stat(weapon_stats, "Energy_Regen")
     total_stats["Buff_Level_Multiplier"] = 1 + 0.0169 * (total_stats["Level"] - 1)
-    total_stats["DMG%_Multiplier"] = 1 + get_stat(weapon_stats, "Damage%_Multiplier") + get_stat(other_stats, "Elemental_Damage")
+    total_stats["DMG%_Multiplier"] = 1 + get_stat(character_stats, "DMG%_Multiplier") + get_stat(weapon_stats, "DMG%_Multiplier") + get_stat(other_stats, "DMG%_Multiplier")
     total_stats["DMG_Taken_Multiplier"] = 1
     # Complete initialization of target_stats
     target_stats["Effective_DEF"] = get_stat(target_stats, "DEF") * (1 - total_stats["PEN_Ratio"]) - get_stat(other_stats, "Flat_PEN")
@@ -114,11 +127,49 @@ def motion_to_damage(
 
     return motion_values
 
-def combo_to_damage(damage_combo, new_mv):
+
+def combo_to_damage(
+    damage_combo,
+    motion_values,
+    total_stats,
+    target_stats,
+    interested_keys = ["Average_Outgoing_DMG"]
+):
+    # No anomaly damage calculated here
+    # for each attack in motion_values
+    for key in damage_combo:
+        motion_values[key]["Base_DMG"] = motion_values[key]["DMG"] / 100 * total_stats["Total_ATK"]
+        motion_values[key]["RES_Multiplier"] = 1 + target_stats[motion_values[key]["Element"] + "_RES"]
+
+        if "Daze_Buildup" in interested_keys:
+            motion_values[key]["Daze_Buildup"] = motion_values[key]["Daze"] / 100 * total_stats["Impact"] * (1 - target_stats["Daze_Resist"]) * (1 + total_stats["Stun_Bonus"])
+        
+        motion_values[key]["Average_Outgoing_DMG"] = motion_values[key]["Base_DMG"] \
+            * total_stats["DMG%_Multiplier"] \
+            * total_stats["DMG_Taken_Multiplier"] \
+            * target_stats["DEF_Multiplier"] \
+            * motion_values[key]["RES_Multiplier"] \
+            * target_stats["Stun_Multiplier"] \
+            * (1 + total_stats["CRIT_Rate"] * total_stats["CRIT_DMG"])
+
     damage = 0
     for combo in damage_combo:
-        damage += new_mv[combo]["Average_Outgoing_DMG"]
+        damage += motion_values[combo]["Average_Outgoing_DMG"]
     return damage
+
+def anomaly_buildup(
+    Base_Anomaly_Buildup,
+    AM_Bonus,
+    Anomaly_Buildup_Bonus,
+    Anomaly_Buildup_RES_reduction,
+    AM,
+):
+    AM_Bonus = AM / 100
+    Anomaly_Buildup = Base_Anomaly_Buildup \
+        * AM_Bonus \
+        * (1 + Anomaly_Buildup_Bonus) \
+        * (1 - Anomaly_Buildup_RES_reduction)
+    return Anomaly_Buildup
 
 def damage_calculator(
         character_stats,
@@ -126,12 +177,8 @@ def damage_calculator(
         weapon_stats,
         other_stats,
         target_path = "enemies/tyrfing.json",
-        constants_path = "constants.json"
     ):
-    # First load constants for anomaly damage
-    with open(constants_path) as f:
-        anomaly_data = json.load(f)["anomaly_data"]
-    # Second get the total_stats
+    # Get the total_stats
     total_stats, target_stats = get_total_stats(
         character_stats,
         weapon_stats,
@@ -226,3 +273,49 @@ def generate_main_disk_options(
     disk_6_combo = [key for key in disk_6_attributes_of_interest.keys()]
 
     return disk_4_combo, disk_5_combo, disk_6_combo
+
+def generate_valid_disk_sets(
+    sets = [
+        "Chaotic_Metal",
+        "Fanged_Metal",
+        "Freedom_Blues",
+        "Hormone_Punk",
+        "Inferno_Metal",
+        "Polar_Metal",
+        "Puffer_Electro",
+        "Shockstar_Disco",
+        "Soul_Rock",
+        "Swing_Jazz",
+        "Thunder_Metal",
+        "Woodpecker_Electro"
+    ],
+):
+    # Get 2 sets, permutation counts e.g. ["Chaotic Metal", "Fanged Metal"] and ["Fanged Metal", "Chaotic Metal"]
+    # but no repeats
+    valid_combinations = []
+    for combination in combinations_with_replacement(sets, 2):
+        if combination[0] != combination[1]:
+            valid_combinations.append(combination)
+            valid_combinations.append([combination[1], combination[0]])
+    return valid_combinations
+
+def add_set_options_to_disk(
+    disk_stats,
+    set_options,
+    stats_of_interest = [
+        "DMG%_Multiplier",
+        "CRIT_Rate",
+        "CRIT_DMG",
+        "Anomaly_Proficiency",
+        "ATK_%",
+        "Final_ATK_%",
+        "PEN_Ratio",
+    ]
+):
+    two_piece_effect = disk_set_effects_dict[set_options[0]]
+    four_piece_effect = disk_set_effects_dict[set_options[1]]
+    for this_stat in stats_of_interest:
+        disk_stats[this_stat] = get_stat(disk_stats, this_stat) + get_stat(two_piece_effect["two"], this_stat, verbose = False)
+        disk_stats[this_stat] = get_stat(disk_stats, this_stat) + get_stat(four_piece_effect["two"], this_stat, verbose = False)
+        disk_stats[this_stat] = get_stat(disk_stats, this_stat) + get_stat(four_piece_effect["four"], this_stat, verbose = False)
+    return disk_stats

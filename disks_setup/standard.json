@@ -4,7 +4,7 @@
     "Flat_DEF": 184,
     "CRIT_Rate": 0.264,
     "CRIT_DMG" : 1.152,
-    "Elemental_Damage": 0.3,
+    "DMG%_Multiplier": 0.3,
     "HP_%": 0,
     "DEF_%": 0,
     "ATK_%": 0.57,
@@ -16,6 +16,6 @@
     "Final_Flat_ATK": 0,
     "Flat_PEN": 0,
     "PEN_Ratio": 0,
-    "Anomaly Proficiency": 0,
-    "Anomaly Mastery": 0
+    "Anomaly_Proficiency": 0,
+    "Anomaly_Mastery": 0
 }

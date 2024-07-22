@@ -7,14 +7,14 @@
     "PEN_Ratio": 0,
     "Impact": 0,
     "Anomaly_Mastery": 0,
-    "Anomaly Proficiency": 75,
+    "Anomaly Proficiency": 0,
     "Energy_Regen": 0,
     "HP_%": 0,
     "DEF_%": 0,
-    "ATK_%": 0,
+    "ATK_%": 0.25,
     "Daze_%": 0,
-    "DMG%_Multiplier": 0.15,
+    "DMG%_Multiplier": 0,
     "Final_HP_%": 0,
     "Final_DEF_%": 0,
-    "Final_ATK_%": 0.1
+    "Final_ATK_%": 0.138
 }

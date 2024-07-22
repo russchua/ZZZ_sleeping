@@ -1,0 +1,7 @@
+Overall Best Damage: 177545.6921102112
+best_main_stats: {'disk_4': 'CRIT_DMG', 'disk_5': 'PEN_Ratio', 'disk_6': 'ATK_%'}
+best_allocation: {'Flat_ATK': 0, 'ATK_%': 10, 'CRIT_Rate': 9, 'CRIT_DMG': 15, 'Flat_PEN': 0}
+best_total_stats: {'Level': 60, 'Level_Coefficient': 281, 'DEF_Reduction': 0, 'Stun_Bonus': 0, 'Total_HP': 9872.3, 'Total_DEF': 789.4, 'Total_ATK': 3401.6264, 'CRIT_Rate': 0.85, 'CRIT_DMG': 1.7, 'PEN_Ratio': 0.32, 'Impact': 93, 'Anomaly_Mastery': 94, 'Anomaly_Proficiency': 93, 'Energy_Regen': 1.2, 'Buff_Level_Multiplier': 1.9970999999999999, 'DMG%_Multiplier': 1.85, 'DMG_Taken_Multiplier': 1}
+best_disk_set_option: ('Polar_Metal', 'Puffer_Electro')
+
+
